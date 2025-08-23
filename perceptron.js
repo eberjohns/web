@@ -4,6 +4,9 @@ const line_element = document.getElementById("line");
 const predic_line_element = document.getElementById("predic-line");
 const new_line_element = document.getElementById("new-line");
 
+const slopeSlider = document.getElementById("slope");
+const interceptSlider = document.getElementById("intercept");
+
 let width = window.innerWidth;
 let height = window.innerHeight;
 
@@ -47,6 +50,23 @@ addEventListener('keydown',function(event){
     draw_line();
     draw_points();
 });
+
+slopeSlider.addEventListener("input", () => {
+  m = parseFloat(slopeSlider.value);
+  redraw();
+});
+
+interceptSlider.addEventListener("input", () => {
+  c = parseFloat(interceptSlider.value);
+  redraw();
+});
+
+function redraw() {
+  line_element.textContent = `m = ${m} | c = ${c}`;
+  ctx.clearRect(0, 0, width, height);
+  draw_line();
+  draw_points();
+}
 
 class Point{
     constructor(x,y,color,label){
