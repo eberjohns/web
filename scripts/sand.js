@@ -1,12 +1,14 @@
 const canvas = document.getElementById("canvas");
 
-const size = 10;
+let size = 10;
+
+if(window.innerHeight>window.innerWidth) size = 5;
 
 let world_color = "white";
 let clr_iter = Math.random()*350;
 
-let width = window.innerWidth - size - (window.innerWidth%size);
-let height = window.innerHeight - size - (window.innerHeight%size) - 80;
+let width = window.innerWidth - (window.innerWidth%size);
+let height = window.innerHeight - (window.innerHeight%size);
 
 canvas.width = width;
 canvas.height = height;
@@ -37,6 +39,41 @@ clr_iter++;
 
 let isMouseDown = false;
 let isRMouseDown = false;
+
+canvas.addEventListener("touchstart", function(event) {
+    event.preventDefault();
+    if (event.touches.length === 1) {
+        isMouseDown = true;
+        updateTouchGridPosition(event.touches[0]);
+    } else if (event.touches.length === 2) {
+        const touch = event.touches[0];
+        updateTouchGridPosition(touch);
+        data[mouseGridY][mouseGridX] = 360; // Place wall
+    }
+});
+
+// Touch End
+canvas.addEventListener("touchend", function(event) {
+    isMouseDown = false;
+});
+
+// Touch Move
+canvas.addEventListener("touchmove", function(event) {
+    event.preventDefault();
+    if (isMouseDown) {
+        const touch = event.touches[0];
+        updateTouchGridPosition(touch);
+    }
+});
+
+function updateTouchGridPosition(touch) {
+    const rect = canvas.getBoundingClientRect();
+    const touchX = touch.clientX - rect.left;
+    const touchY = touch.clientY - rect.top;
+
+    mouseGridX = Math.floor(touchX / size);
+    mouseGridY = Math.floor(touchY / size);
+}
 
 canvas.addEventListener('contextmenu', function(event) {
     event.preventDefault();
