@@ -14,12 +14,12 @@ const maxDepth = Math.sqrt(width*width + height*height);
 canvas.style.background = "black";
 
 let speed = 1;
-//to make canvas dynamically resize using the mouse position
-//map speed to mouse X position and also sqeeze it into limit
-document.addEventListener('mousemove', function(event) {
-    speed = event.clientX/(width/64);
-    // canvas.height = event.clientX;
-    // canvas.height = event.clientY;
+const speedSlider = document.getElementById("slider");
+const sliderValue = document.getElementById("sliderValue");
+
+speedSlider.addEventListener("input", () => {
+    document.getElementById("sliderValue").textContent = speed;
+    speed = parseFloat(speedSlider.value);
 });
 
 class Star{

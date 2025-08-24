@@ -13,21 +13,36 @@
     #canvas {
       display: block;
     }
-    .back {
+    .ui-panel {
       position: absolute;
       top: 20px;
       left: 20px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(0, 0, 0, 0.6);
       padding: 10px 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px; /* spacing between items */
+    }
+    .back {
+      background: rgba(255,255,255,0.8);
+      padding: 6px 12px;
       border-radius: 5px;
       text-decoration: none;
       color: black;
       font-weight: bold;
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
-  <a href="../index.html" class="back">← Back</a>
+  <div class="ui-panel">
+    <a href="../index.html" class="back">← Back</a>
+    <label for="slider" style="color:white; font-weight:bold;">Warp Speed</label>
+    <input id="slider" type="range" min="0" max="20" value="1" step="0.1">
+    <span id="sliderValue" style="color:white; margin-left:10px;">1</span>
+  </div>
+
   <canvas id="canvas"></canvas>
 
   <script src="../scripts/starfield.js"></script>

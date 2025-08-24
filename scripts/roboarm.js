@@ -31,15 +31,15 @@ let rad_angle_2 = angle_2*Math.PI/180;
 let px = center_x;
 let py = center_y;
 
-document.addEventListener("mousemove", function(event) {
-    px = event.clientX;
-    py = event.clientY;
+function handleInput(x, y) {
+    px = x;
+    py = y;
 
     let dx = px - center_x;
     let dy = py - center_y;
 
     let distance = Math.sqrt(dx * dx + dy * dy);
-    let target_angle = Math.atan2(dy, dx) * (180 / Math.PI); // angle from center to click
+    let target_angle = Math.atan2(dy, dx) * (180 / Math.PI);
 
     function clamp(v, min, max) {
         return Math.max(min, Math.min(max, v));
@@ -56,7 +56,19 @@ document.addEventListener("mousemove", function(event) {
 
     angle_2 = 180 - elbow_angle;
     rad_angle_2 = angle_2 * Math.PI / 180;
+}
+
+// Mouse input
+document.addEventListener("mousemove", function(event) {
+    handleInput(event.clientX, event.clientY);
 });
+
+// Touch input
+document.addEventListener("touchmove", function(event) {
+    event.preventDefault(); // prevent scrolling
+    let touch = event.touches[0];
+    handleInput(touch.clientX, touch.clientY);
+}, { passive: false });
 
 function draw(){
     context.strokeStyle = "green";

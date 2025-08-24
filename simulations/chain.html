@@ -13,23 +13,37 @@
     #canvas {
       display: block;
     }
-    .back {
+    .ui-panel {
       position: absolute;
       top: 20px;
       left: 20px;
-      background: rgba(255,255,255,0.8);
+      background: rgba(0, 0, 0, 0.6);
       padding: 10px 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px; /* spacing between items */
+    }
+    .back {
+      background: rgba(255,255,255,0.8);
+      padding: 6px 12px;
       border-radius: 5px;
       text-decoration: none;
       color: black;
       font-weight: bold;
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
-  <a href="../index.html" class="back">← Back</a>
-  <canvas id="canvas"></canvas>
+  <div class="ui-panel">
+    <a href="../index.html" class="back">← Back</a>
+    <label for="slider" style="color:white; font-weight:bold;">Chain Length</label>
+    <input type="range" id="slider" min="2" max="300" value="10">
+    <span id="sliderValue" style="color:white; margin-left:10px;">10</span>
+  </div>
 
+  <canvas id="canvas"></canvas>
   <script src="../scripts/chain.js"></script>
 </body>
 </html>

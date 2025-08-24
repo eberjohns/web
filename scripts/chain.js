@@ -21,8 +21,6 @@ let  r = 10;
 
 let speed = 10;
 
-let no_of_objects = 100;
-
 class Object{
     constructor(x,y,color){
         this.x = x;
@@ -42,7 +40,34 @@ class Object{
     }
 }
 
+let no_of_objects = 10;
+
 const objects = [];
+
+// function to regenerate chain when slider changes
+function generateObjects(count) {
+    objects.length = 0; // clear existing
+    for (let i = 0; i < count; i++) {
+        objects.push(new Object(
+            Math.random() * width,
+            Math.random() * height,
+            `hsl(${Math.random() * 360}, 100%, 80%)`
+        ));
+    }
+}
+
+// initialize once
+generateObjects(no_of_objects);
+
+// slider logic
+const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("sliderValue");
+
+slider.addEventListener("input", function () {
+    no_of_objects = parseInt(this.value);
+    document.getElementById("sliderValue").textContent = this.value;
+    generateObjects(no_of_objects);
+});
 
 for(let i=0;i<no_of_objects;i++){
     objects[i] = new Object(Math.random()*width,Math.random()*height,`hsl(${Math.random() * 360}, 100%, 80%)` );
@@ -53,10 +78,25 @@ document.addEventListener("mousemove", function(event){
     objects[0].y = event.clientY;
 });
 
-// document.addEventListener("mousedown",function(event){
-//     objects[0].x = event.clientX;
-//     objects[0].y = event.clientY;
-// });
+// Mouse input
+document.addEventListener("mousemove", function(event){
+    objects[0].x = event.clientX;
+    objects[0].y = event.clientY;
+});
+
+// Touch input
+document.addEventListener("touchstart", function(event){
+    let touch = event.touches[0];
+    objects[0].x = touch.clientX;
+    objects[0].y = touch.clientY;
+});
+
+document.addEventListener("touchmove", function(event){
+    let touch = event.touches[0];
+    objects[0].x = touch.clientX;
+    objects[0].y = touch.clientY;
+    event.preventDefault(); // Prevent scrolling while moving
+}, { passive: false });
 
 function draw_objects(){
     for(let i=0;i<no_of_objects;i++){

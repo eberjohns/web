@@ -24,10 +24,28 @@
       color: black;
       font-weight: bold;
     }
+    .zoom-btn {
+      position: absolute;
+      top: 20px;
+      background: rgba(255,255,255,0.8);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
+    #zoom-in {
+      left: 120px; /* right of back button */
+    }
+    #zoom-out {
+      left: 170px; /* right of + button */
+    }
   </style>
 </head>
 <body>
   <a href="../index.html" class="back">← Back</a>
+  <div id="zoom-in" class="zoom-btn">+</div>
+  <div id="zoom-out" class="zoom-btn">−</div>
   <canvas id="canvas"></canvas>
 
   <script src="../scripts/grid.js"></script>

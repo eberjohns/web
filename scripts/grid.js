@@ -36,6 +36,17 @@ document.addEventListener("keydown",function(event){
     else if(zoom>max_zoom) zoom = max_zoom;
 });
 
+// Add event listeners for zoom buttons
+document.getElementById("zoom-in").addEventListener("click", () => {
+  zoom *= zoom_step;
+  if (zoom > max_zoom) zoom = max_zoom;
+});
+
+document.getElementById("zoom-out").addEventListener("click", () => {
+  zoom /= zoom_step;
+  if (zoom < min_zoom) zoom = min_zoom;
+});
+
 let cx = width / 2;
 let cy = height / 2;
 
