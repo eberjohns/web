@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perceptron Visulaliser</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
+    #canvas {
+      display: block;
+    }
+    .back {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255,255,255,0.8);
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    p{
+      color: black;
+    }
+    .icon-btn {
+      position: absolute;
+      top: 20px;
+      background: rgba(255,255,255,0.8);
+      border: none;
+      padding: 10px 15px;
+      margin-left: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #menu-btn { left: 100px; }   /* beside Back */
+    #train-btn { left: 150px; }  /* beside Menu */
+
+    #dropdown {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      padding: 15px;
+      border-radius: 10px;
+      color: white;
+      font-size: 14px;
+      width: 250px;
+    }
+
+    #dropdown.hidden {
+      display: none;
+    }
+
+    #dropdown label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #dropdown input[type="range"] {
+      width: 100%;
+    }
+
+    /* Popup modal */
+    #popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #popup.hidden { display: none; }
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: left;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    #close-popup {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back">← Back</a>
+  <button id="menu-btn" class="icon-btn">☰</button>
+  <button id="train-btn" class="icon-btn">Train</button>
+
+  <div id="dropdown" class="hidden">
+    <label>
+      m (slope):
+      <input type="range" id="m-slider" min="-10" max="10" step="1" value="0">
+      <span id="m-value">0</span>
+    </label>
+    <br>
+
+    <label>
+      c (intercept):
+      <input type="range" id="c-slider" min="-400" max="400" step="10" value="0">
+      <span id="c-value">0</span>
+    </label>
+    <br>
+
+    <label>
+      Number of Points:
+      <input type="range" id="points-slider" min="100" max="5000" step="100" value="1000">
+      <span id="points-value">1000</span>
+    </label>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <!-- Popup modal -->
+  <div id="popup" class="hidden">
+    <div class="popup-content">
+      <span id="close-popup">&times;</span>
+      <p id="line"></p>
+      <p id="predic-line"></p>
+      <p id="new-line"></p>
+    </div>
+  </div>
+
+  <script src="../scripts/perceptron.js"></script>
+</body>
+</html>
