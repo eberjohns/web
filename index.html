@@ -4,136 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulation Hub</title>
-  <style>
-    :root {
-      --bg1: #0f2027;
-      --bg2: #203a43;
-      --bg3: #2c5364;
-
-      --card-bg: rgba(30, 30, 45, 0.8);
-      --accent: #00d4ff;
-      --accent2: #ff4ecd;
-      --text: #f5f5f5;
-      --muted: #aaa;
-
-      --radius: 20px;
-      --shadow: 0 8px 25px rgba(0,0,0,0.4);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      color: var(--text);
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: 40px 20px;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    header p {
-      font-size: 1.1rem;
-      margin-top: 8px;
-      color: var(--muted);
-    }
-
-    /* Grid */
-    .grid {
-      flex: 1;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Simulation Tile */
-    .card {
-      height: 350px;
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 2px solid rgba(255,255,255,0.05);
-    }
-
-    .card-content {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 8px;
-      color: var(--accent);
-    }
-    .card p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      flex: 1;
-    }
-
-    .launch-btn {
-      display: inline-block;
-      text-align: center;
-      padding: 10px 15px;
-      margin-top: 15px;
-      border-radius: var(--radius);
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-    .launch-btn:hover {
-      opacity: 0.85;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    footer a {
-      color: var(--accent);
-      margin-left: 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -143,9 +14,10 @@
   </header>
 
   <main class="grid">
-    <!-- Simulation Card -->
     <div class="card">
-      <img src="assets/sand.jpg" alt="Sand Simulation">
+      <div class="thumb">
+        <img src="assets/sand.jpg" alt="Sand Simulation">
+      </div>
       <div class="card-content">
         <h3>Sand Simulation</h3>
         <p>Falling sand particles simulation with physics-inspired behavior.</p>
@@ -154,138 +26,53 @@
     </div>
 
     <div class="card">
-      <img src="assets/starfield.jpg" alt="Starfield">
+      <div class="thumb">
+        <img src="assets/starfield.jpg" alt="Starfield">
+      </div>
       <div class="card-content">
-        <h3>Starfield</h3>
+        <h3>Starfield Simulation</h3>
         <p>Fly through a mesmerizing starfield that mimics infinite space travel.</p>
         <a href="simulations/starfield.html" class="launch-btn">Launch</a>
       </div>
     </div>
 
     <div class="card">
-      <img src="assets/chain.jpg" alt="Chain Simulation">
+      <div class="thumb">
+        <img src="assets/chain.jpg" alt="Chain Simulation">
+      </div>
       <div class="card-content">
-        <h3>Chain</h3>
+        <h3>Chain Simulation</h3>
         <p>Physics-based chain simulation showcasing constraints and movement.</p>
         <a href="simulations/chain.html" class="launch-btn">Launch</a>
       </div>
     </div>
-
     <div class="card">
-      <img src="assets/sand.jpg" alt="Sand Simulation">
+      <div class="thumb">
+        <img src="assets/roboarm.jpg" alt="IK using Roboarm">
+      </div>
       <div class="card-content">
-        <h3>Sand Simulation</h3>
-        <p>Falling sand particles simulation with physics-inspired behavior.</p>
-        <a href="simulations/sand.html" class="launch-btn">Launch</a>
+        <h3>IK Simulation</h3>
+        <p>Inverse Kinematics simulation using a 2 armed robo which follows you.</p>
+        <a href="simulations/roboarm.html" class="launch-btn">Launch</a>
       </div>
     </div>
 
     <div class="card">
-      <img src="assets/starfield.jpg" alt="Starfield">
+      <div class="thumb">
+        <img src="assets/grid.jpg" alt="Grid">
+      </div>
       <div class="card-content">
-        <h3>Starfield</h3>
-        <p>Fly through a mesmerizing starfield that mimics infinite space travel.</p>
-        <a href="simulations/starfield.html" class="launch-btn">Launch</a>
+        <h3>Grid</h3>
+        <p>A grid which will be later build to showcase vectors and all.</p>
+        <a href="simulations/grid.html" class="launch-btn">Launch</a>
       </div>
     </div>
-
-    <div class="card">
-      <img src="assets/chain.jpg" alt="Chain Simulation">
-      <div class="card-content">
-        <h3>Chain</h3>
-        <p>Physics-based chain simulation showcasing constraints and movement.</p>
-        <a href="simulations/chain.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/sand.jpg" alt="Sand Simulation">
-      <div class="card-content">
-        <h3>Sand Simulation</h3>
-        <p>Falling sand particles simulation with physics-inspired behavior.</p>
-        <a href="simulations/sand.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/starfield.jpg" alt="Starfield">
-      <div class="card-content">
-        <h3>Starfield</h3>
-        <p>Fly through a mesmerizing starfield that mimics infinite space travel.</p>
-        <a href="simulations/starfield.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/chain.jpg" alt="Chain Simulation">
-      <div class="card-content">
-        <h3>Chain</h3>
-        <p>Physics-based chain simulation showcasing constraints and movement.</p>
-        <a href="simulations/chain.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/sand.jpg" alt="Sand Simulation">
-      <div class="card-content">
-        <h3>Sand Simulation</h3>
-        <p>Falling sand particles simulation with physics-inspired behavior.</p>
-        <a href="simulations/sand.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/starfield.jpg" alt="Starfield">
-      <div class="card-content">
-        <h3>Starfield</h3>
-        <p>Fly through a mesmerizing starfield that mimics infinite space travel.</p>
-        <a href="simulations/starfield.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/chain.jpg" alt="Chain Simulation">
-      <div class="card-content">
-        <h3>Chain</h3>
-        <p>Physics-based chain simulation showcasing constraints and movement.</p>
-        <a href="simulations/chain.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/sand.jpg" alt="Sand Simulation">
-      <div class="card-content">
-        <h3>Sand Simulation</h3>
-        <p>Falling sand particles simulation with physics-inspired behavior.</p>
-        <a href="simulations/sand.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/starfield.jpg" alt="Starfield">
-      <div class="card-content">
-        <h3>Starfield</h3>
-        <p>Fly through a mesmerizing starfield that mimics infinite space travel.</p>
-        <a href="simulations/starfield.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="assets/chain.jpg" alt="Chain Simulation">
-      <div class="card-content">
-        <h3>Chain</h3>
-        <p>Physics-based chain simulation showcasing constraints and movement.</p>
-        <a href="simulations/chain.html" class="launch-btn">Launch</a>
-      </div>
-    </div>
-
-
   </main>
 
   <footer>
     © 2025 Eber Johns C D | 
-    <a href="https://www.linkedin.com/in/eber-johns-c-d/">LinkedIn</a> | 
-    <a href="https://github.com/eberjohns">GitHub</a>
+    <a href="https://www.linkedin.com/in/eber-johns-c-d/" target="_blank">LinkedIn</a> | 
+    <a href="https://github.com/eberjohns" target="_blank">GitHub</a>
   </footer>
 
 </body>
